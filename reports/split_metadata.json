@@ -1,0 +1,99 @@
+{
+  "selected_model": "random_forest",
+  "target_column": "daily_average_active_power_kw",
+  "target_units": "kW",
+  "feature_columns": [
+    "lag_1_day",
+    "lag_7_day",
+    "lag_14_day",
+    "lag_30_day",
+    "rolling_mean_7_day",
+    "rolling_mean_30_day",
+    "day_of_week",
+    "month",
+    "is_weekend"
+  ],
+  "selection_metric": "validation MAE (kW)",
+  "training_rows": 917,
+  "random_seed": 42,
+  "model_parameters": {
+    "bootstrap": true,
+    "ccp_alpha": 0.0,
+    "criterion": "squared_error",
+    "max_depth": 12,
+    "max_features": 1.0,
+    "max_leaf_nodes": null,
+    "max_samples": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 2,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "n_estimators": 150,
+    "n_jobs": -1,
+    "oob_score": false,
+    "random_state": 42,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "baseline_policy": "For each forecast date, use the most recent nonmissing target strictly before that date; a missing previous calendar day may use an older already-observed target, never a later value.",
+  "evaluation_protocol": "Rolling one-day-ahead predictions. Models are fitted once on training rows; observed earlier validation/test targets may be used only in past-only features for later forecast dates, never for fitting or selection.",
+  "missing_data_policy": "No target imputation. Calendar splits are made before removing rows with missing targets or unavailable predictors. Comparisons use dates where every candidate, including persistence, can be scored.",
+  "split_metadata": {
+    "strategy": "chronological calendar-date split before dropping incomplete rows",
+    "train_fraction": 0.7,
+    "validation_fraction": 0.15,
+    "test_fraction": 0.15000000000000005,
+    "total_calendar_rows": 1442,
+    "feature_columns": [
+      "lag_1_day",
+      "lag_7_day",
+      "lag_14_day",
+      "lag_30_day",
+      "rolling_mean_7_day",
+      "rolling_mean_30_day",
+      "day_of_week",
+      "month",
+      "is_weekend"
+    ],
+    "splits": {
+      "train": {
+        "calendar_start_date": "2006-12-16",
+        "calendar_end_date": "2009-09-19",
+        "calendar_rows": 1009,
+        "eligible_rows": 917,
+        "excluded_rows": 92,
+        "missing_target_rows": 2,
+        "rows_with_unavailable_features": 90,
+        "eligible_start_date": "2007-01-15",
+        "eligible_end_date": "2009-09-19"
+      },
+      "validation": {
+        "calendar_start_date": "2009-09-20",
+        "calendar_end_date": "2010-04-23",
+        "calendar_rows": 216,
+        "eligible_rows": 185,
+        "excluded_rows": 31,
+        "missing_target_rows": 1,
+        "rows_with_unavailable_features": 30,
+        "eligible_start_date": "2009-09-20",
+        "eligible_end_date": "2010-04-23"
+      },
+      "test": {
+        "calendar_start_date": "2010-04-24",
+        "calendar_end_date": "2010-11-26",
+        "calendar_rows": 217,
+        "eligible_rows": 151,
+        "excluded_rows": 66,
+        "missing_target_rows": 6,
+        "rows_with_unavailable_features": 64,
+        "eligible_start_date": "2010-04-24",
+        "eligible_end_date": "2010-11-26"
+      }
+    }
+  },
+  "validation_scored_start_date": "2009-09-20",
+  "validation_scored_end_date": "2010-04-23",
+  "test_scored_start_date": "2010-04-24",
+  "test_scored_end_date": "2010-11-26"
+}

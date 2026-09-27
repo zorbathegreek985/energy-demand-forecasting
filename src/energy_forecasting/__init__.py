@@ -1,0 +1,1 @@
+"""Tools for household electricity demand analysis and forecasting."""

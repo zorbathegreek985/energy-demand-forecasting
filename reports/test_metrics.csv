@@ -1,0 +1,2 @@
+mae_kw,rmse_kw,r2,n_observations,model,scored_start_date,scored_end_date
+0.15518319601622782,0.19914376530141506,0.571116880012462,151,random_forest,2010-04-24,2010-11-26
