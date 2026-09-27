@@ -6,12 +6,6 @@ day's **average active power in kilowatts (kW)**. It demonstrates time-aware
 feature engineering, chronological evaluation, reproducible Python scripts,
 and automated tests. Daily average power is not daily energy in kWh.
 
-> **Stage 3 status:** the preprocessing pipeline, EDA, leakage-safe features,
-> chronological model training/evaluation, selected-model persistence, and
-> next-day prediction are implemented. The Streamlit dashboard is not yet
-> implemented. Generated datasets, model artifacts, and figures are local and
-> excluded from Git.
-
 ## Dataset
 
 Download the dataset manually from the
@@ -258,20 +252,6 @@ See [reports/project_report.md](reports/project_report.md) for the problem
 definition, experimental design, verified results, interpretation, and
 limitations.
 
-## Resume / LinkedIn description
-
-“Built a reproducible time-series forecasting project for household
-electricity demand, including data-quality checks, calendar-aligned
-leakage-safe features, chronological model selection, and saved-model
-prediction. Compared four approaches and recorded a held-out test MAE of
-0.155 kW on the UCI household dataset.” The Streamlit dashboard is not yet
-implemented.
-
-## Interview practice
-
-1. **Why aggregate by day?** It matches the forecast target and reduces noise
-   from minute-level readings. The result remains average power (kW).
-2. **How are missing readings handled?** They are reported and excluded from
    the mean rather than replaced with fabricated measurements.
 3. **How was leakage prevented?** Features use only observations
    available at each forecast origin, and data will be split chronologically.
